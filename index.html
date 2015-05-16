@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <link href="assets/css/flickr.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script type='text/javascript' src="http://code.angularjs.org/1.1.0/angular-resource.min.js"></script>
+    <script src="assets/js/flickrApp.js"></script>
+    <script src="assets/js/services/flickrUtil.js"></script>
+    <script src="assets/js/filters/flickrFilters.js"></script>
+    <script src="assets/js/services/flickrFactory.js"></script>
+    <script src="assets/js/controllers/flickrController.js"></script>
+  </head>
+  <body ng-app="FlickrApp">
+
+  <div ng-controller="flickrController as flckr">
+    <div id="onepage-header" class="onepage-row">
+      <div class="search-bar" >
+        <form ng-submit="flckr.search()">
+          <label>Insert comma separated values: </label>
+          <input type="text" placeholder="Search" ng-model="flckr.search_object.query_tags" >
+          <input type="radio" ng-model="flckr.search_object.query_type"  value="all">All Tags
+          <input type="radio" ng-model="flckr.search_object.query_type"  value="any">Any Tags  
+          <input type="submit" value="Submit"> 
+          <label>Page</label>
+          <input type="text" size="3" ng-model="flckr.current_page">/{{flckr.total_pages}} - {{flckr.current_page}}
+        </form>
+      </div>
+      <hr/>
+    </div>
+
+    <div id="onepage-content" class="big-photo-element onepage-row">
+      <center><img ng-src="{{flckr.current_photo.location}}"  /></center>
+      <a ng-href="{{flckr.current_photo.location}}" >{{flckr.current_photo.title}}</a>
+       by <a ng-href="{{flckr.current_photo.author_page}}">{{flckr.current_photo.author}}</a><br>
+      Description: {{flckr.current_photo.description | strip_html }}<br>
+      Tags: {{flckr.current_photo.tags}}<br>
+    </div>
+
+
+      <div id="onepage-footer" class="onepage-row">
+        <hr/>
+        <div id="onepage-scroll-left" class="onepage-col" ng-if="!flckr.loading">
+          <img src="assets/images/left.png" ng-click="flckr.change_page(-1)" />
+        </div>
+
+      <div  id="onepage-scroll-content" class="onepage-col">
+        <div ng-repeat="item in flckr.photos">
+          <div class="photoElement" >
+            <img ng-src='{{ item | photo_show }}' ng-click="flckr.show(item.id, item.secret)" />
+            <div class="caption">
+              <a href="{{ item.link}}">{{ item.title}}</a> 
+            </div>
+          </div>
+        </div>   
+      </div>  
+      
+      <div id="onepage-scroll-right" class="onepage-col" ng-if="!flckr.loading">
+        <img src="assets/images/right.png" ng-click="flckr.change_page(+1)"/>
+      </div>
+    </div>
+    </div>
+  </div>
+  </body>
+</html>
+

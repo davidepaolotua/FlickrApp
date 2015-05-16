@@ -1,0 +1,64 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    width: 100%;
+}
+
+.onepage-row,
+.onepage-col {
+    overflow: hidden;
+    position: absolute;
+    border-radius: 0;
+}
+
+.onepage-row { 
+    left: 0; right: 0;}
+.onepage-col { 
+    bottom: 0; margin: auto;}
+.onepage-scroll-x { overflow-x: auto;}
+.onepage-scroll-y { overflow-y: auto;}
+
+#onepage-header {height: 50px; top:0; position:fixed;}
+#onepage-content {top: 50px; bottom:200px; overflow-y: auto; display-table}
+#onepage-footer {height: 200px; bottom:0;}
+
+#onepage-scroll-left {width: 30px; left:0; display: table;}
+#onepage-scroll-content {top: 5px; left: 30px; right: 30px}
+#onepage-scroll-right {width: 30px; right:0; display: table;}
+
+#onepage-scroll-left img {width: 30px; display: table-cell; vertical-align: middle;}
+#onepage-scroll-right img {width: 30px; display: table-cell; vertical-align: middle;}
+
+.photoElement {
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid black;
+    height: 30%;
+    width: 8%;
+    float: left;
+    text-align: center;
+    vertical-align: baseline;
+    max-height: 190px;
+}
+
+.photoElement img {
+    width: 100%;
+    display: block;
+    text-align: center;  
+    max-height: 140px; 
+}
+
+img {
+    width: auto;
+    display: block;
+    text-align: center;  
+    max-height: auto; 
+}
+
+.big-photo-element { text-align: center;}
+#big-image img {display: block; text-align: center; }
+.end { clear: both;}
