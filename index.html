@@ -22,7 +22,7 @@
           <input type="radio" ng-model="flckr.search_object.query_type"  value="any">Any Tags  
           <input type="submit" value="Submit"> 
           <label>Page</label>
-          <input type="text" size="3" ng-model="flckr.current_page">/{{flckr.total_pages}} - {{flckr.current_page}}
+          <input type="text" size="3" ng-model="flckr.current_page">/{{flckr.total_pages}}
         </form>
       </div>
       <hr/>
@@ -45,10 +45,10 @@
 
       <div  id="onepage-scroll-content" class="onepage-col">
         <div ng-repeat="item in flckr.photos">
-          <div class="photoElement" >
-            <img ng-src='{{ item | photo_show }}' ng-click="flckr.show(item.id, item.secret)" />
+          <div class="photoElement" ng-click="flckr.show(item.id, item.secret)">
+            <img ng-src='{{ item | photo_show }}'  />
             <div class="caption">
-              <a href="{{ item.link}}">{{ item.title}}</a> 
+              {{ item.title}}
             </div>
           </div>
         </div>   
